@@ -40,6 +40,7 @@ ALLOWED_HOSTS = [os.environ.get("HOSTNAME")]
 # Application definition
 
 INSTALLED_APPS = [
+    'warehouse.apps.WarehouseConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
