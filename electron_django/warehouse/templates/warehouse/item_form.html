@@ -1,0 +1,22 @@
+{% extends "warehouse/base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <fieldset>
+        <legend class="border-bottom mb-4">Add Item</legend>
+        {{ form|crispy }}
+    </fieldset>
+
+    <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">SAVE ITEM</button>
+    </div>
+
+</form>
+
+{% endblock content %}

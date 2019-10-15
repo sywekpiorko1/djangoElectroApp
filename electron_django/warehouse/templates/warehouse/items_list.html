@@ -1,29 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "warehouse/base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Items list</title>
-</head>
+{% block content %}
 
-<body>
-    <h1>Warehouse items list</h1>
+{% for item in items %}
 
-    <table>
-        {% for item in items %}
-        <tr>
-            <td>{{ item.id }}</td>
-            <td>{{ item.item_id }}</td>
-            <td>{{ item.name }}</td>
-            <td>{{ item.category }}</td>
-            <td>{{ item.location }}</td>
-            <td>{{ item.quantity }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+<article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+            <small class="text-muted">Location - {{ item.location }}</small>
+            <h5 class="mr-2">Category - {{ item.category }}</h5>
+        </div>
+        <h3 class="article-title">Name - {{ item.name }}</h3>
+        <p class="article-content">Quantity - {{ item.quantity }}</p>
+    </div>
+</article>
 
-</body>
+{% endfor %}
 
-</html>
+{% endblock content %}
