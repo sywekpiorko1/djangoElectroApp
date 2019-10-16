@@ -41,6 +41,7 @@ ALLOWED_HOSTS = [os.environ.get("HOSTNAME")]
 
 INSTALLED_APPS = [
     'warehouse.apps.WarehouseConfig',
+    'accounts.apps.AccountsConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
