@@ -6,16 +6,16 @@
 
 <form method="POST">
 
-    {% csrf_token %}
+  {% csrf_token %}
 
-    <fieldset>
-        <legend class="border-bottom mb-4">Add Item</legend>
-        {{ form|crispy }}
-    </fieldset>
+  <fieldset>
+    <legend class="border-bottom mb-4">Add Item</legend>
+    {{ form|crispy }}
+  </fieldset>
 
-    <div class="form-group">
-        <button class="btn btn-outline-info" type="submit">SAVE ITEM</button>
-    </div>
+  <div class="form-group">
+    <button class="btn btn-outline-info" type="submit">SAVE ITEM</button>
+  </div>
 
 </form>
 

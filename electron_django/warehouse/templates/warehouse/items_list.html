@@ -5,14 +5,14 @@
 {% for item in items %}
 
 <article class="media content-section">
-    <div class="media-body">
-        <div class="article-metadata">
-            <small class="text-muted">Location - {{ item.location }}</small>
-            <h5 class="mr-2">Category - {{ item.category }}</h5>
-        </div>
-        <h3 class="article-title">Name - {{ item.name }}</h3>
-        <p class="article-content">Quantity - {{ item.quantity }}</p>
+  <div class="media-body">
+    <div class="article-metadata">
+      <small class="text-muted">Location - {{ item.location }}</small>
+      <h5 class="mr-2">Category - {{ item.category }}</h5>
     </div>
+    <h3 class="article-title">Name - {{ item.name }}</h3>
+    <p class="article-content">Quantity - {{ item.quantity }}</p>
+  </div>
 </article>
 
 {% endfor %}
