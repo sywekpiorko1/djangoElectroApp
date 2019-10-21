@@ -16,10 +16,10 @@ def register(request):
             username = form.cleaned_data.get('username')
             
             # create success messages using f string
-            messages.success(request, f'Account created for {username}!')
+            messages.success(request, f'Your account has been created - You can now LogIn')
 
             # redirect user to other page after successful registration
-            return redirect('warehouse-items')
+            return redirect('login')
 
     else: 
 
@@ -28,3 +28,7 @@ def register(request):
         form = UserRegisterForm()
     
     return render(request, 'accounts/register.html', {'form': form})
+
+
+def profile(request):
+    return render(request, 'accounts/profile.html')
