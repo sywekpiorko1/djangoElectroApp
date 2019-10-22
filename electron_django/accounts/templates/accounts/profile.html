@@ -10,7 +10,27 @@
       <p class="text-secondary">{{ user.email }}</p>
     </div>
   </div>
-<!-- FORM HERE -->
+
+  <!-- add enctype to save image data on form submit-->
+  <form method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    <fieldset class="form-group">
+      <legend class="border-bottom mb-4">Profile data info</legend>
+      
+      <!-- include fields of both seperate forms - User and Profile -->
+      
+      {{ u_form|crispy }}
+      {{ p_form|crispy }}
+    
+    </fieldset>
+
+    <div class="form-group">
+      <button class="btn btn-outline-info" type="submit">Update</button>
+    </div>
+
+  </form>
+
 </div>
 
 {% endblock content %}
