@@ -2,19 +2,38 @@
 
 {% block content %}
 
-{% for item in items %}
 
-<article class="media content-section">
-  <div class="media-body">
-    <div class="article-metadata">
-      <small class="text-muted">Location - {{ item.location }}</small>
-      <h5 class="mr-2">Category - {{ item.category }}</h5>
-    </div>
-    <h3 class="article-title">Name - {{ item.name }}</h3>
-    <p class="article-content">Quantity - {{ item.quantity }}</p>
-  </div>
-</article>
+<div class="container">
 
-{% endfor %}
+  <ol class="breadcrumb my-4">
+    <li class="breadcrumb-item active">Warehouse items list</li>
+  </ol>
+  <table class="table">
+    <thead class="thead-inverse">
+      <tr>
+        <th>Name & Category</th>
+        <th>Location</th>
+        <th>Quantity</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      {% for item in items %}
+
+      <tr>
+        <td>
+          {{ item.name }}
+          <small class="text-muted d-block">{{ item.category }}</small>
+        </td>
+        <td class="align-middle">{{ item.location }}</td>
+        <td class="align-middle">{{ item.quantity }}</td>
+      </tr>
+
+      {% endfor %}
+
+    </tbody>
+  </table>
+</div>
+
 
 {% endblock content %}
