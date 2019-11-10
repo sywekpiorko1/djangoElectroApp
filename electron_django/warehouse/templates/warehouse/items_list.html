@@ -22,7 +22,7 @@
 
       <tr>
         <td>
-          {{ item.name }}
+          <a href="{% url 'warehouse-items-detail' item.pk %}">{{ item.name }}</a>
           <small class="text-muted d-block">{{ item.category }}</small>
         </td>
         <td class="align-middle">{{ item.location }}</td>
