@@ -13,5 +13,8 @@ class Item(models.Model):
     category=models.ForeignKey(Category,on_delete=models.CASCADE)
     location=models.CharField(max_length=10)
     quantity=models.IntegerField(default=0)
+    image = models.ImageField(default='default_item.jpg', upload_to='items_pics')
+
+    
     def __str__(self):
         return self.name

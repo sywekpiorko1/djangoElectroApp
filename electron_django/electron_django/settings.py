@@ -42,7 +42,9 @@ ALLOWED_HOSTS = [os.environ.get("HOSTNAME")]
 INSTALLED_APPS = [
     'warehouse.apps.WarehouseConfig',
     'accounts.apps.AccountsConfig',
+
     'crispy_forms',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -66,7 +68,7 @@ ROOT_URLCONF = 'electron_django.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
