@@ -43,7 +43,10 @@ def warehouse_detail_view(request, pk):
     # 1 object -> detail view
     item = get_object_or_404(Item, pk=pk)
     template_name = "warehouse/item_detail.html"
-    context = {"item": item}
+    context = {
+        'item': item,
+        'title': f"{item.name} details"
+    }
     return render(request, template_name, context)
 
 
