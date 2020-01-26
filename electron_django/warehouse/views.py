@@ -50,7 +50,7 @@ def warehouse_detail_view(request, pk):
 @staff_member_required
 def warehouse_update_view(request, pk):
     item = get_object_or_404(Item, pk=pk)
-    form = ItemForm(request.POST or None, instance=item)
+    form = ItemForm(request.POST or None, request.FILES or None, instance=item)
 
     if form.is_valid():
         form.save()    
