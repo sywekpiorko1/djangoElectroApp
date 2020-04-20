@@ -11,8 +11,8 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
     # override default behaviour of save() to resize profile picture size
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super(Profile, self).save(*args, **kwargs)
 
         # get image of current instance
         img = Image.open(self.image.path)

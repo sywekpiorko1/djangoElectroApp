@@ -9,7 +9,6 @@ class Category(models.Model):
         return self.category
 
 class Item(models.Model):
-    item_id=models.AutoField(primary_key=True)
     name=models.CharField(max_length=50)
     category=models.ForeignKey(Category,on_delete=models.CASCADE, related_name='categories')
     location=models.CharField(max_length=10)
@@ -20,7 +19,6 @@ class Item(models.Model):
         return self.name
 
 class ItemBySerial(models.Model):
-    item_by_serial_id=models.AutoField(primary_key=True)
     item=models.ForeignKey(Item, on_delete=models.CASCADE, related_name='items')
     serial_number=models.CharField(max_length=100)
     moved_last=models.DateTimeField(auto_now_add=True)
@@ -29,6 +27,3 @@ class ItemBySerial(models.Model):
 
     def __str__(self):
         return self.serial_number
-
-
-
