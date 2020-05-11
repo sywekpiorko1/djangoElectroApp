@@ -1,5 +1,6 @@
 from django.contrib.admin.views.decorators import staff_member_required
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.contrib import messages
 from .models import Item
 from .forms import ItemForm
 
@@ -8,6 +9,8 @@ from .forms import ItemForm
 
 def warehouse_items_list(request):
     results = Item.objects.all()
+    if not results:
+        messages.warning(request, f'No items in dbase, please add some logged as admin')
     template_name = "warehouse/items_list.html"
     context = {
         'items': results,
@@ -55,8 +58,15 @@ def warehouse_update_view(request, pk):
     item = get_object_or_404(Item, pk=pk)
     form = ItemForm(request.POST or None, request.FILES or None, instance=item)
 
-    if form.is_valid():
-        form.save()    
+    if request.method == 'POST':
+        
+        if form.is_valid():
+            form.save()    
+
+            messages.success(request, f"Item {item.name} updated in Warehouse")
+
+            return redirect(reverse('warehouse-items-detail', kwargs={'pk': pk}))
+
 
     template_name = "warehouse/item_form.html"
     context = {
@@ -72,7 +82,7 @@ def warehouse_delete_view(request, pk):
 
     if request.method == "POST":
         item.delete()
-        return redirect("/warehouse")
+        return redirect("/")
 
     template_name = "warehouse/item_delete.html"
     context = {

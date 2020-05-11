@@ -7,10 +7,17 @@
 
   <ol class="breadcrumb my-4">
     <li class="breadcrumb-item active">Warehouse items list</li>
+
   </ol>
+
+  <div class="p-3 text-right">
+    <a href="{% url 'warehouse-items-create' %}" class="btn btn-primary">ADD NEW ITEMS</a>  
+  </div>
+
   <table class="table">
     <thead class="thead-inverse">
       <tr>
+        <th>Pic</th>
         <th>Name & Category</th>
         <th>Location</th>
         <th>Quantity</th>
@@ -21,6 +28,8 @@
       {% for item in items %}
 
       <tr>
+        <td>  
+          <img src="{{ item.image.url }}" class="article-img" alt="Item image">
         <td>
           <a href="{% url 'warehouse-items-detail' item.pk %}">{{ item.name }}</a>
           <small class="text-muted d-block">{{ item.category }}</small>
