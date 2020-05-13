@@ -13,10 +13,12 @@
           <p class="card-text">Category: {{ item.category }}</p>
           <p class="card-text">Availability: {{ item.quantity }} in stock</p>
           <p class="card-text"><small class="text-muted">Location: {{ item.location }}</small></p>
+          {% if request.user.is_staff %}
           <div class="row">
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'warehouse-items-edit' item.pk %}">EDIT</a>
             <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'warehouse-items-delete' item.pk %}">DELETE</a>
           </div>
+          {% endif %}
         </div>
       </div>
     </div>

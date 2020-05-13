@@ -10,17 +10,19 @@
 
   </ol>
 
+  {% if request.user.is_staff %}
   <div class="p-3 text-right">
     <a href="{% url 'warehouse-items-create' %}" class="btn btn-primary">ADD NEW ITEMS</a>  
   </div>
+  {% endif %}
 
   <table class="table">
     <thead class="thead-inverse">
       <tr>
         <th>Pic</th>
         <th>Name & Category</th>
-        <th>Location</th>
         <th>Quantity</th>
+        <th>Daily Rent Cost</th>
       </tr>
     </thead>
     <tbody>
@@ -34,8 +36,8 @@
           <a href="{% url 'warehouse-items-detail' item.pk %}">{{ item.name }}</a>
           <small class="text-muted d-block">{{ item.category }}</small>
         </td>
-        <td class="align-middle">{{ item.location }}</td>
         <td class="align-middle">{{ item.quantity }}</td>
+        <td class="align-middle">{{ item.dailyRentCost }}</td>
       </tr>
 
       {% endfor %}

@@ -19,7 +19,7 @@ def warehouse_items_list(request):
     return render(request, template_name, context)
 
 
-@staff_member_required
+@staff_member_required(login_url='login')
 def warehouse_create_view(request):
     
     if request.method == "POST":

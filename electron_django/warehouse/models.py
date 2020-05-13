@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.validators import MinValueValidator
 # Create your models here.
 
 class Category(models.Model):
@@ -14,16 +15,7 @@ class Item(models.Model):
     location=models.CharField(max_length=10)
     quantity=models.PositiveSmallIntegerField(default=0)
     image = models.ImageField(default='default_item.jpg', upload_to='items_pics')
-
+    dailyRentCost=models.DecimalField(default=0, max_digits=6, decimal_places=2, validators=[MinValueValidator(0.00)])
+    
     def __str__(self):
-        return self.name
-
-class ItemBySerial(models.Model):
-    item=models.ForeignKey(Item, on_delete=models.CASCADE, related_name='items')
-    serial_number=models.CharField(max_length=100)
-    moved_last=models.DateTimeField(auto_now_add=True)
-    moved_until=models.DateTimeField(auto_now_add=True)
-    moved_by_who=models.ForeignKey(User, on_delete=models.CASCADE, related_name='users')
-
-    def __str__(self):
-        return self.serial_number
+        return self.name  
